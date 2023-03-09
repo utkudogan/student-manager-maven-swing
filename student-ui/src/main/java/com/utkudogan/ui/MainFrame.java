@@ -20,6 +20,7 @@ import com.utkudogan.service.impl.MainFrameServiceImpl;
 public class MainFrame extends JFrame {
 	
 	private TablePanel tablePanel;
+	private StatusPanel statusPanel;
 	private MainFrameService mainFrameService;
 	
 	public MainFrame() {
@@ -40,11 +41,13 @@ public class MainFrame extends JFrame {
 	private void constructLayout() {
 		setLayout(new BorderLayout());
 		add(tablePanel, BorderLayout.CENTER);
+		add(statusPanel, BorderLayout.SOUTH);
 	}
 	
 	private void initializeVariables() {
 		this.mainFrameService = new MainFrameServiceImpl();
 		this.tablePanel = new TablePanel();
+		this.statusPanel = new StatusPanel();
 	}
 
 	private JMenuBar constructMenuBar() {

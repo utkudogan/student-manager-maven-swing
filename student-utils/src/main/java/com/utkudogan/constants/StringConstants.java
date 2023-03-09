@@ -15,7 +15,7 @@ public class StringConstants {
 	public static final String MENU_ITEM_REMOVE = "Remove students...";
 	public static final String EXIT_CONFIRM_TEXT = "Do you really want to exit?";
 	public static final String EXIT_CONFRIM_TITLE = "Confirm Exit";
-	public static final String STATUS_PANEL_TEXT = "@GlobalSoftwareSupport 2021 ";
+	public static final String STATUS_PANEL_TEXT = "@UtkuDoganSupport 2023 ";
 	public static final String ADD_STUDENT_FORM_TITLE = "Add New Students";
 	public static final String SAVE_BUTTON = "Save";
 	public static final String CANCEL_BUTTON = "Cancel";

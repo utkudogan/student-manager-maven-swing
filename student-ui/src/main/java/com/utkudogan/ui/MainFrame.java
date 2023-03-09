@@ -1,7 +1,9 @@
 package com.utkudogan.ui;
 
+import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 import javax.swing.JFrame;
 import javax.swing.JMenu;
@@ -9,15 +11,40 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 
+import com.utkudogan.Student;
 import com.utkudogan.constants.NumberConstants;
 import com.utkudogan.constants.StringConstants;
+import com.utkudogan.service.MainFrameService;
+import com.utkudogan.service.impl.MainFrameServiceImpl;
 
 public class MainFrame extends JFrame {
+	
+	private TablePanel tablePanel;
+	private MainFrameService mainFrameService;
+	
 	public MainFrame() {
 		super(StringConstants.APP_NAME);
 		constructFrame();
 		setJMenuBar(constructMenuBar());
+		initializeVariables();
+		constructLayout();
+		update();
+	}
 
+	private void update() {
+		List<Student> students = mainFrameService.getStudents();
+		tablePanel.setTableModel(students);
+		tablePanel.update();
+	}
+
+	private void constructLayout() {
+		setLayout(new BorderLayout());
+		add(tablePanel, BorderLayout.CENTER);
+	}
+	
+	private void initializeVariables() {
+		this.mainFrameService = new MainFrameServiceImpl();
+		this.tablePanel = new TablePanel();
 	}
 
 	private JMenuBar constructMenuBar() {

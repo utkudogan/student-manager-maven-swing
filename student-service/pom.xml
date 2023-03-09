@@ -6,4 +6,11 @@
     <version>0.0.1-SNAPSHOT</version>
   </parent>
   <artifactId>student-service</artifactId>
+  <dependencies>
+  	<dependency>
+  		<groupId>com.utkudogan</groupId>
+  		<artifactId>student-model</artifactId>
+  		<version>0.0.1-SNAPSHOT</version>
+  	</dependency>
+  </dependencies>
 </project>

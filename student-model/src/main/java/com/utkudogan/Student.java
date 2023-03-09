@@ -2,6 +2,8 @@ package com.utkudogan;
 
 public class Student {
 
+	
+	private int id;
 	private int age;
 	private int zipCode;
 	private String name;
@@ -11,12 +13,20 @@ public class Student {
 
 	}
 
-	public Student(int age, int zipCode, String name, String country) {
-		super();
+	public Student(int id, int age, int zipCode, String name, String country) {
+		this.id = id;
 		this.age = age;
 		this.zipCode = zipCode;
 		this.name = name;
 		this.country = country;
+	}
+	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public int getAge() {

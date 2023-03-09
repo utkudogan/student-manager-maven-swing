@@ -12,16 +12,23 @@ import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 
 import com.utkudogan.Student;
+import com.utkudogan.callbacks.AddStudentCallback;
+import com.utkudogan.callbacks.RemoveStudentCallback;
 import com.utkudogan.constants.NumberConstants;
 import com.utkudogan.constants.StringConstants;
+import com.utkudogan.service.AddStudentFormService;
 import com.utkudogan.service.MainFrameService;
+import com.utkudogan.service.impl.AddStudentFormServiceImpl;
 import com.utkudogan.service.impl.MainFrameServiceImpl;
 
-public class MainFrame extends JFrame {
+public class MainFrame extends JFrame implements AddStudentCallback,
+RemoveStudentCallback {
 	
 	private TablePanel tablePanel;
 	private StatusPanel statusPanel;
+	private AddStudentForm addStudentForm;
 	private MainFrameService mainFrameService;
+
 	
 	public MainFrame() {
 		super(StringConstants.APP_NAME);
@@ -29,7 +36,12 @@ public class MainFrame extends JFrame {
 		setJMenuBar(constructMenuBar());
 		initializeVariables();
 		constructLayout();
+		setCallbacks();
 		update();
+	}
+	
+	private void setCallbacks() {
+		this.addStudentForm.setCallback(this);
 	}
 
 	private void update() {
@@ -48,6 +60,7 @@ public class MainFrame extends JFrame {
 		this.mainFrameService = new MainFrameServiceImpl();
 		this.tablePanel = new TablePanel();
 		this.statusPanel = new StatusPanel();
+		this.addStudentForm = new AddStudentForm(this);
 	}
 
 	private JMenuBar constructMenuBar() {
@@ -81,7 +94,7 @@ public class MainFrame extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// addStudentForm.setVisible(true);
+				addStudentForm.setVisible(true);
 			}
 		});
 
@@ -117,4 +130,15 @@ public class MainFrame extends JFrame {
 		setLocationRelativeTo(null); // frame ekranın ortasında açılır
 		setVisible(true);
 	}
+	
+	@Override
+	public void studentSaved() {
+		update();
+	}
+
+	@Override
+	public void studentRemoved() {
+		update();
+	}
 }
+
